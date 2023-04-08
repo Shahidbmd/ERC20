@@ -11,8 +11,8 @@ contract ICO is Ownable, ReentrancyGuard {
     //token for Payment
     IERC20 paymentToken;
     //Events
-    event paymentDetail (uint8 indexed _paymentId, IERC20 indexed _paymentTokens);
-    event purchasedTokens ( address indexed owner, uint256 _totalPrice, uint256 _totalTokens);
+    event PaymentDetail (uint8 indexed _paymentId, IERC20 indexed _paymentTokens);
+    event PurchasedTokens ( address indexed owner, uint256 _totalPrice, uint256 _totalTokens);
 
     // //mapping id to token Addresses
     mapping(uint8 => IERC20) private  paymentTokens;
@@ -29,7 +29,7 @@ contract ICO is Ownable, ReentrancyGuard {
         isValidToken(_paymentToken);
         isValidPayId(_paymentId);
         paymentTokens[_paymentId] = _paymentToken;
-        emit paymentDetail (_paymentId, _paymentToken);
+        emit PaymentDetail (_paymentId, _paymentToken);
     }
     
 
@@ -42,7 +42,7 @@ contract ICO is Ownable, ReentrancyGuard {
         isValidAmount(tokensToTransfer);
         transferPayment(_paymentId,msg.sender, address(this), _amountToPay);
         transferTokens(msg.sender,tokensToTransfer);
-        emit purchasedTokens(msg.sender, _amountToPay , tokensToTransfer);
+        emit PurchasedTokens(msg.sender, _amountToPay , tokensToTransfer);
 
     }
 
