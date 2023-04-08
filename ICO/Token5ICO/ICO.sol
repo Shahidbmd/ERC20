@@ -12,7 +12,6 @@ contract ICO is Ownable, ReentrancyGuard {
     IERC20 paymentToken;
     //Events
     event paymentDetail (uint8 indexed _paymentId, IERC20 indexed _paymentTokens);
-    event whiteListStatus (address indexed _account, bool _status, address _whose);
     event purchasedTokens ( address indexed owner, uint256 _totalPrice, uint256 _totalTokens);
 
     // //mapping id to token Addresses
